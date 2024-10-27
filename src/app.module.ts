@@ -16,10 +16,11 @@ import { GroupModule } from './group/group.module';
 import { LidModule } from './lid/lid.module';
 import { PaymentModule } from './payment/payment.module';
 import { TargetModule } from './target/target.module';
+import { PrismaService } from './prisma/prisma.service';
 
 @Module({
   imports: [LidStatusModule, LidReasonModule, RoleModule, BranchModule, PrismaModule, StageModule, StudentsModule, StudentGroupModule, LessonsModule, StudentLessonModule, StuffRoleModule, StuffModule, StuffGroupModule, GroupModule, LidModule, PaymentModule, TargetModule],
-  controllers: [],
-  providers: [],
+  providers: [PrismaService],
+  exports: [PrismaService]
 })
-export class AppModule {}
+export class AppModule { }
