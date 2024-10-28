@@ -1,1 +1,1 @@
-export class CreateStuffGroupDto {}
+export class CreateStaffGroupDto {}

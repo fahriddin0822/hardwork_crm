@@ -1,34 +1,33 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { StuffGroupService } from './stuff_group.service';
-import { CreateStuffGroupDto } from './dto/create-stuff_group.dto';
-import { UpdateStuffGroupDto } from './dto/update-stuff_group.dto';
+import { StaffGroupService } from './stuff_group.service';
+import { CreateStaffGroupDto, UpdateStaffGroupDto } from './dto';
 
-@Controller('stuff-group')
-export class StuffGroupController {
-  constructor(private readonly stuffGroupService: StuffGroupService) {}
+@Controller('staff-group')
+export class StaffGroupController {
+  constructor(private readonly staffGroupService: StaffGroupService) {}
 
   @Post()
-  create(@Body() createStuffGroupDto: CreateStuffGroupDto) {
-    return this.stuffGroupService.create(createStuffGroupDto);
+  create(@Body() createStaffGroupDto: CreateStaffGroupDto) {
+    return this.staffGroupService.create(createStaffGroupDto);
   }
 
   @Get()
   findAll() {
-    return this.stuffGroupService.findAll();
+    return this.staffGroupService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.stuffGroupService.findOne(+id);
+    return this.staffGroupService.findOne(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateStuffGroupDto: UpdateStuffGroupDto) {
-    return this.stuffGroupService.update(+id, updateStuffGroupDto);
+  update(@Param('id') id: string, @Body() updateStaffGroupDto: UpdateStaffGroupDto) {
+    return this.staffGroupService.update(+id, updateStaffGroupDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.stuffGroupService.remove(+id);
+    return this.staffGroupService.remove(+id);
   }
 }

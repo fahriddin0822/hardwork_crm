@@ -1,26 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { CreateStuffGroupDto } from './dto/create-stuff_group.dto';
-import { UpdateStuffGroupDto } from './dto/update-stuff_group.dto';
+import { CreateStaffGroupDto, UpdateStaffGroupDto } from './dto';
 
 @Injectable()
-export class StuffGroupService {
-  create(createStuffGroupDto: CreateStuffGroupDto) {
-    return 'This action adds a new stuffGroup';
+export class StaffGroupService {
+  create(createStaffGroupDto: CreateStaffGroupDto) {
+    return 'This action adds a new staffGroup';
   }
 
   findAll() {
-    return `This action returns all stuffGroup`;
+    return `This action returns all staffGroup`;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} stuffGroup`;
+    return `This action returns a #${id} staffGroup`;
   }
 
-  update(id: number, updateStuffGroupDto: UpdateStuffGroupDto) {
-    return `This action updates a #${id} stuffGroup`;
+  update(id: number, updateStaffGroupDto: UpdateStaffGroupDto) {
+    return `This action updates a #${id} staffGroup`;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} stuffGroup`;
+    return `This action removes a #${id} staffGroup`;
   }
 }

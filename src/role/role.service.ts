@@ -4,7 +4,7 @@ import { CreateRoleDto, UpdateRoleDto } from './dto';
 
 @Injectable()
 export class RoleService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   async create(createRoleDto: CreateRoleDto) {
     return this.prisma.role.create({
@@ -15,8 +15,10 @@ export class RoleService {
   }
 
   async findAll() {
-    return this.prisma.role.findMany();
-  }
+    return this.prisma.role.findMany({
+      include: { StaffRole: { include: { staff: true } } },
+    });
+  }  
 
   async findOne(id: number) {
     return this.prisma.role.findUnique({

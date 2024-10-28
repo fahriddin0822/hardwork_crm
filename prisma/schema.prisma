@@ -38,16 +38,30 @@ model LidStatus {
 model Role {
   id   Int    @id @default(autoincrement())
   name String @unique
+
+  StaffRole StaffRole[]
 }
 
-model Stuff {
-  id           Int     @id @default(autoincrement())
-  first_name   String
-  last_name    String
-  phone_number String
-  login        String
-  password     String
-  is_active    Boolean
+model StaffRole {
+  staff   Staff @relation(fields: [staffId], references: [id])
+  staffId Int
+
+  role   Role @relation(fields: [roleId], references: [id])
+  roleId Int
+
+  @@id([staffId, roleId])
+  @@map("staff_role")
+}
+
+model Staff {
+  id              Int         @id @default(autoincrement())
+  first_name      String
+  last_name       String
+  phone_number    String
+  login           String      @unique
+  hashed_password String
+  is_active       Boolean     @default(true)
+  StaffRole       StaffRole[]
 }
 
 model Group {
